@@ -1,145 +1,1065 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Permohonan Keahlian | SMASH UPNM</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMASH UPNM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #93c5fd;
+      --secondary: #f97316;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: #f1f5f9;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      min-height: 80vh;
+      max-width: 1400px;
+      margin: 0 auto 1.5rem;
+      gap: 1.5rem;
+      padding: 0 1.5rem;
+    }
+
+    nav {
+      background: white;
+      width: 250px;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 1.5rem;
+      height: fit-content;
+    }
+
+    nav h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0.5rem 0;
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 500;
+    }
+
+    nav ul li:hover, nav ul li.active {
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    nav ul li i {
+      width: 20px;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: auto;
+    }
+
+    /* Form Styles */
+    .form-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .form-header h1 {
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .form-section h2 {
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      font-size: 1.25rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid #e2e8f0;
+      font-family: inherit;
+      transition: var(--transition);
+      background-color: #f8fafc;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+      background-color: white;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .checkbox-group input {
+      width: auto;
+    }
+
+    .checkbox-group label {
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: white;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary-light);
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .success-icon {
+      font-size: 4rem;
+      color: var(--success);
+      margin-bottom: 1rem;
+    }
+
+    .modal-button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Results Section Styles */
+    .search-box {
+      display: flex;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: var(--radius) 0 0 var(--radius);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-box button {
+      padding: 0 25px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .search-box button:hover {
+      background: var(--primary-dark);
+    }
+
+    .result-container {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .success-result {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--success);
+      border-radius: var(--radius);
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .success-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .success-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--success);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+      color: var(--white);
+      font-size: 1.5rem;
+    }
+
+    .success-title h2 {
+      color: var(--success);
+      margin-bottom: 5px;
+    }
+
+    .success-title p {
+      color: var(--dark);
+      opacity: 0.8;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .detail-item h3 {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 5px;
+    }
+
+    .detail-item p {
+      font-size: 1.1rem;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      background: #0d9f6e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .download-btn i {
+      margin-right: 8px;
+    }
+
+    .fail-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--danger);
+      border-radius: var(--radius);
+      padding: 25px;
+      text-align: center;
+      display: none;
+    }
+
+    .fail-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--danger);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 15px;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .fail-message h2 {
+      color: var(--danger);
+      margin-bottom: 10px;
+    }
+
+    .fail-message p {
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .try-again {
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--danger);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .try-again:hover {
+      background: #dc2626;
+    }
+	
+	.card2 {
+	padding: 10px;
+        border-radius: 20px;
+	margin-bottom: 15px;
+}
+
+    /* New styles for interview table */
+    .interview-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .interview-table th {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem;
+      text-align: left;
+    }
+
+    .interview-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .interview-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .interview-table tr:hover {
+      background-color: #f8fafc;
+    }
+
+    .room-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      border: none;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .room-1 {
+      background-color: var(--primary);
+    }
+
+    .room-1:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .room-2 {
+      background-color: var(--secondary);
+    }
+
+    .room-2:hover {
+      background-color: #ea580c;
+    }
+
+    .interview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-controls {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      background-color: white;
+      border: 1px solid var(--gray);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .filter-btn:hover {
+      background-color: var(--primary-light);
+    }
+
+    @media (max-width: 815px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .container {
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        position: static;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .search-box {
+        flex-direction: column;
+      }
+      
+      .search-box input {
+        border-radius: var(--radius);
+        margin-bottom: 10px;
+      }
+      
+      .search-box button {
+        border-radius: var(--radius);
+        padding: 15px;
+      }
+
+      .success-title h2, p {
+        font-size: 1.2rem;
+     }
+
+	.form-header h1 {
+	font-size: 1.7rem;
+	}
+
+
+	.interview-table th, 
+      .interview-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .room-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      .filter-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .interview-header h2 {
+        font-size: 1.25rem;
+      }
+    }
+
+	@media (max-width: 480px) {
+      .interview-table th, 
+      .interview-table td {
+        padding: 0.5rem 0.3rem;
+        font-size: 0.8rem;
+      }
+
+      .room-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+      }
+
+      .filter-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+
+      .filter-controls {
+        gap: 0.5rem;
+      }
+
+      .interview-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <!-- Add jsPDF library for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-    <div class="application-container">
-        <div class="form-header">
-            <h1><i class="fas fa-edit"></i> Permohonan Keahlian SMASH UPNM</h1>
-            <p>Sila isi maklumat yang diperlukan</p>
-        </div>
+  <header>
+    <h1>Portal Permohonan Keahlian Badan Pelajar</h1>
+    <p class="badge" style="margin-top: 0.5rem; background: rgba(255,255,255,0.2);">Kelab Badminton UPNM (SMASH UPNM)</p>
+  </header>
+
+  <div class="container">
+    <nav>
+      <h3><i class="fas fa-bars"></i> Menu Portal </h3>
+      <ul>
+        <li class="active" onclick="loadContent('welcome')">
+          <i class="fas fa-home"></i> Laman Utama
+        </li>
+        <li onclick="loadContent('apply')">
+          <i class="fas fa-file-alt"></i> Permohonan
+        </li>
+        <li onclick="loadContent('interview')">
+          <i class="fas fa-calendar-alt"></i> Temuduga
+        </li>
+        <li onclick="loadContent('result')">
+          <i class="fas fa-clipboard-check"></i> Keputusan
+        </li>
+      </ul>
+    </nav>
+
+    <main id="main-content">
+      <div class="card">
         
-        <form id="applicationForm" class="application-form">
-            <div class="form-section">
-                <h2>Maklumat Diri</h2>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="fullName">Nama Penuh</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="SEMUA HURUF BESAR" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="matricNumber">Nombor Matrik</label>
-                        <input type="text" id="matricNumber" name="matricNumber" placeholder="2210122" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Emel Al Fateh</label>
-                        <input type="email" id="email" name="email" placeholder="2210122@alfateh.upnm.edu.my" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Nombor Telefon</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Tanpa (-)" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="room">Nombor Bilik</label>
-                        <input type="text" id="room" name="room" required>
-                    </div>
-                    <div class="form-group" >
-                        <label for="status">Status Pelajar</label>
-                        <select id="status" name="status">
-                            <option value="">Sila Pilih</option>
-                            <option value="Awam">Awam</option>
-                            <option value="PALAPES">PALAPES</option>
-                            <option value="Kadet">Kadet</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="no" style="display: none;">
-                        <label for="noaskar">Nombor Badan/Tentera</label>
-                        <input type="text" id="noaskar" name="noaskar" required>
-                    </div>
-                </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 Application Portal. All rights reserved.</p>
+    <div style="margin-top: 0.5rem;">
+      <a href="#" style="color: white; margin: 0 0.5rem;"><i class="fab fa-linkedin"></i></a>
+      <a href="#" style="color: white; margin: 0 0.5rem;"><i class="fab fa-twitter"></i></a>
+      <a href="#" style="color: white; margin: 0 0.5rem;"><i class="fas fa-envelope"></i></a>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h2>Application Submitted Successfully!</h2>
+      <p>Thank you for your application. We will review it and get back to you soon.</p>
+      <button id="closeModal" class="btn modal-button">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const content = {
+      welcome: `
+        <div class="card">
+          <h2>Selamat Datang ke Portal Permohonan Keahlian SMASH UPNM</h2>
+          <p style="margin-top: 0.5rem; color: var(--gray);">Sila baca maklumat di bawah dengan teliti:</p>
+          
+          <div class="grid grid-cols-2" style="margin-top: 2rem; gap: 1.5rem;">
+            <div class="card2" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
+              <h3><i class="fas fa-rocket" style="color: var(--primary);"></i> Pengenalan</h3>
+              <p style="margin: 0.5rem 0 0.4rem; text-align: justify; color: var(--dark);">i) Keahlian: Terbuka kepada semua pelajar Asasi, Diploma, dan Sarjana Muda yang berstatus "AKTIF".</p>
+	      <p style="margin: 0.5rem 0 0.4rem; text-align: justify; color: var(--dark);">ii) Tempoh: Tempoh keahlian semua ahli adalah selama satu sidang (satu tahun sesi akademik).</p>
+	      <p style="margin: 0.5rem 0 0.4rem; text-align: justify; color: var(--dark);">iii) Ahli yang tidak aktif (tidak terlibat sebagai AJK/Peserta) dalam mana-mana program SMASH UPNM akan dilucutkan keahlian.</p>
+	      <p style="margin: 0.5rem 0 1.4rem; text-align: justify; color: var(--dark);">iv) Yuran Keahlian: RM 15 seorang per sidang (satu tahun sesi akademik).</p>
+	      <p style="margin: 0.5rem 0 0.4rem; text-align: justify; color: var(--dark);">Jendela Permohonan Keahlian bagi sidang 2025/2026 adalah seperti berikut:</p>
+	      <p style="margin: 0.5rem 0 0.4rem; text-align: justify; color: #ff0000;">Pelajar Asasi & Diploma 2025/2026</p>
+              <p style="margin: 0.5rem 0 0.4rem; text-align: justify; color: var(--dark);">Tarikh buka: 16 Julai 2025 (Rabu)</p>
+              <p style="margin: 0.5rem 0 0.4rem; text-align: justify; color: var(--dark);">Tarikh tutup: 22 Julai 2025 (Selasa)</p>
+              <p style="margin: 0.5rem 0 0.4rem; text-align: justify; color: var(--dark);">Tarikh temuduga: 25 Julai 2025 (Jumaat)</p>
+              <p style="margin: 0.5rem 0 0.2rem; text-align: justify; color: var(--dark);">Hebahan keputusan: 31 Julai 2025 (Khamis)</p>
+              <!--<button class="btn" onclick="loadContent('apply')">
+                <i class="fas fa-plus"></i> New Application
+              </button>-->
             </div>
             
-            <div class="form-section">
-                <h2>Maklumat Akademik</h2>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="college">Kolej</label>
-                        <select id="college" name="college" required>
-                            <option value="">Sila Pilih</option>
-                            <option value="Jebat">Jebat</option>
-                            <option value="Srikandi">Srikandi</option>
-                            <option value="Tuah">Tuah</option>
-                            <option value="Kasturi">Kasturi</option>
-                            <option value="Lembah">Lembah</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="faculty">Fakulti</label>
-                        <select id="faculty" name="faculty" required>
-                            <option value="">Sila Pilih</option>
-                            <option value="AKP">AKP</option>
-                            <option value="FSTP">FSTP</option>
-                            <option value="FPPP">FPPP</option>
-                            <option value="PB">PB</option>
-                            <option value="APPI">APPI</option>
-                            <option value="FKJ">FKJ</option>
-                            <option value="Pusat Asasi">Pusat Asasi</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="yearGroup" style="display: none;">
-                        <label for="year">Tahun</label>
-                        <select id="year" name="year">
-                            <option value="">Sila Pilih</option>
-                            <option value="Tahun 1">Tahun 1</option>
-                            <option value="Tahun 2">Tahun 2</option>
-                            <option value="Tahun 3">Tahun 3</option>
-                            <option value="Tahun 4">Tahun 4</option>
-                            <option value="Tahun 5">Tahun 5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="course">Jurusan</label>
-                        <input type="text" id="course" name="course" required>
-                    </div>
-                </div>
+            <div class="card2" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5);">
+              <h3><i class="fas fa-clipboard-list" style="color: var(--success);"></i> Sebarang Pertanyaan</h3>
+              <p style="margin: 0.5rem 0 0.2rem; color: var(--dark);">Sila hubungi: 011-6122 5464 (Setiausaha Agung)</p>
+              <!--<button class="btn" style="background: var(--success);" onclick="loadContent('result')">
+                <i class="fas fa-eye"></i> View Status
+              </button>-->
             </div>
-            
+          </div>
+        </div>
+      `,
+      
+      apply: `
+        <div class="card">
+        <h1 style="text-align: center; color: #F443U0;"> Permohonan Keahlian akan dibuka pada </h1>	
+	<h1 style="text-align: center; color: #FF0000;"> 16 Julai 2025 | 9:00 pagi</h1>
+          <!--<div class="form-header">
+            <h1><i class="fas fa-edit"></i> Borang Permohonan Keahlian</h1>
+            <p>Sila isi dengan betul dan tepat</p>
+          </div>-->
+          
+          <!--<form id="applicationForm" class="application-form">
             <div class="form-section">
-                <h2>Soalan Tambahan</h2>
+              <h2>Maklumat Pelajar</h2>
+              <div class="form-grid">
                 <div class="form-group">
-                    <label for="reason">Mengapakah anda memilih untuk menyertai Kelab ini?</label>
-                    <textarea id="reason" name="reason" rows="4" required></textarea>
+                  <label for="fullName">Nama Penuh</label>
+                  <input type="text" id="fullName" name="fullName" placeholder="SEMUA HURUF BESAR" required>
                 </div>
                 <div class="form-group">
-                    <label for="strengthsWeaknesses">Apakah kelebihan yang boleh disumbangkan dan kekurangan diri anda?</label>
-                    <textarea id="strengthsWeaknesses" name="strengthsWeaknesses" rows="4" required></textarea>
+                  <label for="matricNumber">Nombor Matrik</label>
+                  <input type="text" id="matricNumber" name="matricNumber" placeholder="125XXXX @ 725XXXX" required>
                 </div>
+                <div class="form-group">
+                  <label for="email">Emel Al Fateh</label>
+                  <input type="email" id="email" name="email" placeholder="125XXXX / 725XXXX@alfateh.upnm.edu.my" required>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Nombor Telefon</label>
+                  <input type="tel" id="phone" name="phone" placeholder="Tanpa sengkang (-)" required>
+                </div>
+                <div class="form-group">
+                  <label for="room">Nombor Bilik</label>
+                  <input type="text" id="room" name="room" required>
+                </div>
+                <div class="form-group">
+                  <label for="status">Status Pelajar</label>
+                  <select id="status" name="status">
+                    <option value="">Sila Pilih</option>
+                    <option value="Awam">Awam</option>
+                    <!--<option value="PALAPES">PALAPES</option>-->
+                    <!--<option value="Kadet">Kadet</option>-->
+                  </select>
+                </div>
+                <div class="form-group" id="no" style="display: none;">
+                  <label for="noaskar">Nombor Badan/Tentera</label>
+                  <input type="text" id="noaskar" name="noaskar" required>
+                </div>
+              </div>
             </div>
             
             <div class="form-section">
-                <div class="checkbox-group">
-                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                    <label for="agreeTerms">Saya akan memberikan komitmen yang sepenuhnya jika terpilih dan tertakluk bawah Perlembagaan Kelab ini.</label>
+              <h2>Maklumat Akademik</h2>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="college">Kolej</label>
+                  <select id="college" name="college" required>
+                    <option value="">Sila Pilih</option>
+                    <option value="Jebat">Jebat</option>
+                    <option value="Srikandi">Srikandi</option>
+                    <option value="Tuah">Tuah</option>
+                    <option value="Kasturi">Kasturi</option>
+                    <option value="Lembah">Lembah</option>
+                  </select>
                 </div>
+                <div class="form-group">
+                  <label for="faculty">Fakulti</label>
+                  <select id="faculty" name="faculty" required>
+                    <option value="">Please Select</option>
+                    <option value="AKP">Akademi Kecergasan Pertahanan</option>
+                    <option value="FSTP">Fakulti Sains dan Teknologi Pertahanan</option>
+                    <option value="FPPP">Fakulti Pengurusan dan Pengajian Pertahanan</option>
+                    <option value="PB">Pusat Bahasa</option>
+                    <option value="APPI">Akademi Pertahanan Pengajian Islam</option>
+                    <option value="FKJ">Fakulti Kejuruteraan</option>
+                    <option value="Pusat Asasi">Pusat Asasi</option>
+                  </select>
+                </div>
+                <div class="form-group" id="yearGroup" style="display: none;">
+                  <label for="year">Tahun</label>
+                  <select id="year" name="year">
+                    <option value="">Sila Pilih</option>
+                    <option value="Tahun 1">Year 1</option>
+                    <option value="Tahun 2">Year 2</option>
+                    <option value="Tahun 3">Year 3</option>
+                    <option value="Tahun 4">Year 4</option>
+                    <option value="Tahun 5">Year 5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="course">Jurusan</label>
+                  <input type="text" id="course" name="course" required>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-section">
+              <h2>Soalan Tambahan</h2>
+              <div class="form-group">
+                <label for="reason">Mengapakah anda berminat untuk menyertai Badan Pelajar ini?</label>
+                <textarea id="reason" name="reason" rows="4" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="strengthsWeaknesses">Apakah kelebihan anda yang boleh disumbangkan?</label>
+                <textarea id="strengthsWeaknesses" name="strengthsWeaknesses" rows="4" required></textarea>
+              </div>
+            </div>
+            
+            <div class="form-section">
+              <div class="checkbox-group">
+                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                <label for="agreeTerms">Saya akan memberikan komitmen yang sepenuhnya jika terpilih dan tertakluk bawah Perlembagaan Badan Pelajar ini.</label>
+              </div>
             </div>
             
             <div class="form-actions">
-                <button type="submit" class="submit-button">Hantar Permohonan</button>
+              <button type="submit" class="btn submit-button">Mohon Keahlian</button>
             </div>
-        </form>
-    </div>
-
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
+          </form>
+        </div>-->
+      `,
+      
+      interview: `
+        <div class="card">
+	<h1 style="text-align: center; color: #F443U0;"> Jadual Temuduga akan dimaklumkan pada </h1>	
+	<h1 style="text-align: center; color: #FF0000;"> 24 Julai 2025 </h1>
+          <!--<div class="interview-header">
+            <h2><i class="fas fa-calendar-alt" style="margin-right: 0.5rem;"></i> Interview Schedule</h2>
+            <div class="filter-controls">
+              <button class="filter-btn active" onclick="filterInterviews('all')">All</button>
+              <button class="filter-btn" onclick="filterInterviews('room1')">Room 1</button>
+              <button class="filter-btn" onclick="filterInterviews('room2')">Room 2</button>
             </div>
-            <h2>Permohonan Telah Berjaya Dihantar!</h2>
-            <p>Terima kasih atas permohonan anda. Kami akan menilai permohonan ini dan maklumat lanjut bakal menyusul.</p>
-            <button id="closeModal" class="modal-button">Tutup</button>
+          </div>-->
+          
+          <!--<div class="interview-container">
+            <table class="interview-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Matric No.</th>
+                  <th>Time</th>
+                  <th>Room</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-room="room1">
+                  <td>Ali bin Abu</td>
+                  <td>2240111</td>
+                  <td>10:00 AM</td>
+                  <td>Room 1</td>
+                  <td><button class="room-btn room-1">Join</button></td>
+                </tr>
+                <tr data-room="room1">
+                  <td>Siti binti Aminah</td>
+                  <td>2240222</td>
+                  <td>10:30 AM</td>
+                  <td>Room 1</td>
+                  <td><button class="room-btn room-1">Join</button></td>
+                </tr>
+                <tr data-room="room2">
+                  <td>Ahmad bin Ismail</td>
+                  <td>2240333</td>
+                  <td>11:00 AM</td>
+                  <td>Room 2</td>
+                  <td><button class="room-btn room-2">Join</button></td>
+                </tr>
+                <tr data-room="room2">
+                  <td>Fatimah binti Abdullah</td>
+                  <td>2240444</td>
+                  <td>11:30 AM</td>
+                  <td>Room 2</td>
+                  <td><button class="room-btn room-2">Join</button></td>
+                </tr>
+                <tr data-room="room1">
+                  <td>Muhammad bin Hassan</td>
+                  <td>2240555</td>
+                  <td>2:00 PM</td>
+                  <td>Room 1</td>
+                  <td><button class="room-btn room-1">Join</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>-->
+      `,
+      
+      result: `
+        <div class="card">
+          <!--<h2><i class="fas fa-clipboard-check" style="margin-right: 0.5rem;"></i> Application Status</h2>-->
+          <!--<p style="margin-top: 0.5rem; color: var(--gray);">Check your application status here</p>-->
+          
+          <div class="content">
+            <!--<div class="search-box">
+              <!--<input type="text" id="studentId" placeholder="Enter your Matric Number" required>-->
+              <!--<button id="checkBtn" class="btn">Check</button>-->
+            </div>
+	    <h1 style="text-align: center; color: #F443U0;"> Semakan Keputusan Pengambilan akan dibuka pada </h1>	
+	    <h1 style="text-align: center; color: #FF0000;"> 31 Julai 2025 </h1>
+            
+            <div id="successResult" class="result-container">
+              <div class="success-result">
+                <div class="success-header">
+                  <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="success-title">
+                    <h2>Congratulations!</h2>
+                    <p>Your application has been accepted and appointed as a member of MTKT.</p>
+                  </div>
+                </div>
+                
+                <div class="details-grid">
+                  <div class="detail-item">
+                    <h3>Full Name</h3>
+                    <p id="resultName">John Doe</p>
+                  </div>
+                  <div class="detail-item">
+                    <h3>Matric Number</h3>
+                    <p id="resultId">STD2023001</p>
+                  </div>
+                  <div class="detail-item">
+                    <h3>Faculty</h3>
+                    <p id="resultFaculty">Computer Science</p>
+                  </div>
+                  <div class="detail-item">
+                    <h3>Phone Number</h3>
+                    <p id="resultPhone">012-3456789</p>
+                  </div>
+                  <div class="detail-item">
+                    <h3>Year of Study</h3>
+                    <p id="resultYear">Year 1</p>
+                  </div>
+                  <div class="detail-item">
+                    <h3>Room Number</h3>
+                    <p id="resultRoom">A-101</p>
+                  </div>
+                </div>
+                
+                <button class="download-btn" id="downloadBtn">
+                  <i class="fas fa-download"></i> Download Offer Letter
+                </button>
+              </div>
+            </div>
+            
+            <div id="failMessage" class="fail-message">
+              <div class="fail-icon">
+                <i class="fas fa-times"></i>
+              </div>
+              <h2>Application UNSUCCESSFUL!</h2>
+              <p></p>
+              <button class="try-again" id="tryAgainBtn">Try Again</button>
+            </div>
+          </div>
         </div>
-    </div>
-<script>
+      `
+    };
+
+    function loadContent(section) {
+      document.getElementById('main-content').innerHTML = content[section];
+      
+      // Update active nav item
+      document.querySelectorAll('nav ul li').forEach(item => {
+        item.classList.remove('active');
+      });
+      event.currentTarget.classList.add('active');
+      
+      // Initialize form functionality if it's the apply section
+      if (section === 'apply') {
+        initializeForm();
+      }
+      
+      // Initialize result functionality if it's the result section
+      if (section === 'result') {
+        initializeResult();
+      }
+    }
+
+    // Initialize jsPDF
+const { jsPDF } = window.jspdf;
+
+// Student database - replace with your actual data
+const studentDatabase = {
+    "STD2023003": {
+        status: "fail",
+    },
+    "2240224": {
+        status: "success",
+        name: "Muhammad Taufiq bin Rosdan",
+        faculty: "Fakulti Pengajian dan Pengurusan Pertahanan",
+        phone: "012-3456789",
+        year: "Tahun 1",
+        room: "_____",
+        exco: "Multimedia",
+        careTaker: "Muhammad Nuramirul Afiq bin Mad Azhar",
+        dateStart: "1 November 2025"
+    }
+};
+
+function loadContent(section) {
+    document.getElementById('main-content').innerHTML = content[section];
+    
+    // Update active nav item
+    document.querySelectorAll('nav ul li').forEach(item => {
+        item.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+    
+    // Initialize form functionality if it's the apply section
+    if (section === 'apply') {
+        initializeForm();
+    }
+    
+    // Initialize result functionality if it's the result section
+    if (section === 'result') {
+        initializeResult();
+    }
+    
+    // Initialize room buttons if it's the interview section
+    if (section === 'interview') {
+        document.querySelectorAll('.room-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const room = this.classList.contains('room-1') ? 'Room 1' : 'Room 2';
+                alert(`Joining ${room} interview session`);
+                // In a real application, this would redirect to the interview room
+            });
+        });
+    }
+}
+
+function initializeForm() {
     // Show noaskar field based on status selection
     document.getElementById('status').addEventListener('change', function() {
         const noGroup = document.getElementById('no');
-        if (this.value == '' || this.value == 'Awam') {
+        if (this.value === '' || this.value === 'Awam') {
             noGroup.style.display = 'none';
             document.getElementById('noaskar').required = false;
         } else {
@@ -151,7 +1071,7 @@
     // Show year field only if faculty is not Pusat Asasi
     document.getElementById('faculty').addEventListener('change', function() {
         const yearGroup = document.getElementById('yearGroup');
-        if (this.value == '' || this.value == 'Pusat Asasi') {
+        if (this.value === '' || this.value === 'Pusat Asasi') {
             yearGroup.style.display = 'none';
             document.getElementById('year').required = false;
         } else {
@@ -160,51 +1080,276 @@
         }
     });
 
-    // Form submission to Google Sheets
+    // Form submission handler
     document.getElementById('applicationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const submitBtn = document.querySelector('.submit-button');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menghantar...';
-    
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwAx5o8mkx60L3BeFZJQ4JO-uZdI2BY3n04QIr7KCPq5QCLWijDv86Wdw_uBIkPxhVIKg/exec';
-    const formData = new FormData(this);
-    
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
+        e.preventDefault();
+        
+        const submitBtn = document.querySelector('.submit-button');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menghantar...';
+        
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwAx5o8mkx60L3BeFZJQ4JO-uZdI2BY3n04QIr7KCPq5QCLWijDv86Wdw_uBIkPxhVIKg/exec';
+        const formData = new FormData(this);
+        
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors', // Important for local testing
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(() => {
+            // With no-cors mode, we can't read the response
+            document.getElementById('successModal').style.display = 'flex';
+            document.getElementById('applicationForm').reset();
+            document.getElementById('yearGroup').style.display = 'none';
+            document.getElementById('no').style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error!', error);
+            alert("Ralat semasa menghantar permohonan. Sila cuba lagi.");
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Hantar Permohonan';
+        });
     });
+}
+
+function initializeResult() {
+    const checkBtn = document.getElementById('checkBtn');
+    const studentIdInput = document.getElementById('studentId');
+    const successResult = document.getElementById('successResult');
+    const failMessage = document.getElementById('failMessage');
+    const tryAgainBtn = document.getElementById('tryAgainBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
     
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', // Important for local testing
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
+    checkBtn.addEventListener('click', function() {
+        const studentId = studentIdInput.value.trim().toUpperCase();
+        
+        if (!studentId) {
+            alert('Sila masukkan Nombor Matrik anda');
+            return;
         }
-    })
-    .then(() => {
-        // With no-cors mode, we can't read the response
-        document.getElementById('successModal').style.display = 'flex';
-        document.getElementById('applicationForm').reset();
-        document.getElementById('yearGroup').style.display = 'none';
-        document.getElementById('no').style.display = 'none';
-    })
-    .catch(error => {
-        console.error('Error!', error);
-        alert("Ralat semasa menghantar permohonan. Sila cuba lagi.");
-    })
-    .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Hantar Permohonan';
+        
+        // Simulate network delay
+        setTimeout(() => {
+            const studentData = studentDatabase[studentId];
+            
+            if (studentData) {
+                if (studentData.status === "success") {
+                    // Populate the success data
+                    document.getElementById('resultName').textContent = studentData.name;
+                    document.getElementById('resultId').textContent = studentId;
+                    document.getElementById('resultFaculty').textContent = studentData.faculty;
+                    document.getElementById('resultPhone').textContent = studentData.phone;
+                    document.getElementById('resultYear').textContent = studentData.year;
+                    document.getElementById('resultRoom').textContent = studentData.room;
+                    
+                    // Show success result
+                    failMessage.style.display = 'none';
+                    successResult.style.display = 'block';
+                } else {
+                    // Update fail message with reason
+                    document.querySelector('.fail-message p').textContent = 
+                        `Dukacita dimaklumkan permohonan anda tidak berjaya. Terima kasih.`;
+                    
+                    // Show fail message
+                    successResult.style.display = 'none';
+                    failMessage.style.display = 'block';
+                }
+            } else {
+                // Student ID not found
+                document.querySelector('.fail-message p').textContent = 
+                    'Tiada Rekod Permohonan.';
+                
+                successResult.style.display = 'none';
+                failMessage.style.display = 'block';
+            }
+            
+            // Scroll to result
+            document.querySelector('.result-container, .fail-message').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }, 500); // Simulate network delay
     });
+    
+    tryAgainBtn.addEventListener('click', function() {
+        failMessage.style.display = 'none';
+        studentIdInput.focus();
+    });
+    
+    downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        generateAdmissionSlip();
+    });
+    
+    function generateAdmissionSlip() {
+        const studentId = studentIdInput.value.trim().toUpperCase();
+        const studentData = studentDatabase[studentId];
+        
+        if (!studentData || studentData.status !== "success") return;
+        
+        // Create new PDF in portrait mode
+        const doc = new jsPDF({
+            orientation: "portrait",
+            unit: "mm"
+        });
+
+        // Set document properties
+        doc.setProperties({
+            title: `Slip Tawaran MTKT - ${studentData.name}`,
+            subject: 'Tawaran Keahlian MTKT',
+            author: 'Majlis Tertinggi Kolej Tuah',
+            keywords: 'admission, university, slip',
+            creator: 'Majlis Tertinggi Kolej Tuah'
+        });
+
+        // Add background watermark
+        doc.setFillColor(240, 240, 240);
+        doc.rect(0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height, 'F');
+        doc.setTextColor(200, 200, 200);
+        doc.setFontSize(40);
+        doc.text("", 140, 230, { angle: 45, align: 'center' });
+        
+        // Reset text color
+        doc.setTextColor(0, 0, 0);
+
+        // Add header with university info
+        doc.setFillColor(44, 62, 80); // Dark blue
+        doc.rect(0, 0, doc.internal.pageSize.width, 20, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "bold");
+        doc.text("SLIP TAWARAN KEAHLIAN BADAN PELAJAR", 108, 10, { align: 'center' });
+        doc.setFontSize(10);
+        doc.text("MAJLIS TERTINGGI KOLEJ TUAH (MTKT)", 108, 15, { align: 'center' });
+
+        // Main content container
+        doc.setDrawColor(44, 62, 80);
+        doc.setLineWidth(0.5);
+        doc.rect(10, 25, doc.internal.pageSize.width - 20, doc.internal.pageSize.height - 35);
+
+        // Student photo placeholder with border
+        doc.setFillColor(255, 255, 255);
+        doc.rect(15, 31, 34, 43, 'F');
+        doc.addImage("https://via.placeholder.com/150x200?text=Photo", "JPEG", 15, 31, 34, 43);
+        doc.rect(15, 31, 34, 43); // Border
+
+        // Student information section
+        doc.setTextColor(44, 62, 80);
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "bold");
+        doc.text("MAKLUMAT DIRI", 54, 35);
+        
+        doc.setFont("helvetica", "normal");
+        doc.text(`Nama Penuh : ${studentData.name}`, 54, 42);
+        doc.text(`Nombor Matrik : ${studentId}`, 54, 48);
+        doc.text(`Fakulti : ${studentData.faculty}`, 54, 54);
+        doc.text(`No Telefon : ${studentData.phone}`, 54, 60);
+        doc.text(`No Bilik : ${studentData.room}`, 54, 66);
+
+        // Academic details section
+        doc.setFont("helvetica", "bold");
+        doc.text("MAKLUMAT LANTIKAN", 54, 78);
+        
+        doc.setFont("helvetica", "normal");
+        doc.text(`Jawatan : ${studentData.exco}`, 54, 85);
+        doc.text(`Caretaker : ${studentData.careTaker}`, 54, 91);
+        doc.text(`Tarikh Mula Lantikan : ${studentData.dateStart}`, 54, 97);
+        doc.text(`Tarikh Tamat Lantikan : __ Oktober 2026`, 54, 103);
+        doc.setFontSize(10);
+        doc.text(`Saya, dengan penuh rasa tanggungjawab dan kesedaran, BERJANJI akan melaksanakan tugas dan amanah`, 15, 165);
+        doc.text(`sebagai ahli MTKT dengan sepenuh komitmen saya dan sebaik-baiknya serta mematuhi Perlembagaan MTKT.`, 15, 170);
+        doc.text(`Saya berikrar akan:`, 15, 180);
+        doc.text(`1. Memegang amanah ini dengan penuh integriti, ketelusan dan rasa tanggungjawab demi kepentingan mahasiswa,`, 15, 190);
+        doc.text(`institusi, dan masyarakat.`, 19, 195);
+        doc.text(`2. Menolak segala bentuk salah guna kuasa, unsur pilih kasih, dan kepentingan peribadi dalam menjalankan`, 15, 200);
+        doc.text(`tugas kepimpinan.`, 19, 205);
+        doc.text(`3. Bekerja secara profesional, berdisiplin dan sistematik dalam setiap tindakan, mesyuarat dan urusan pentadbiran.`, 15, 210);
+        doc.text(`4. Mengutamakan kepentingan bersama berbanding kepentingan individu atau kumpulan, dan sentiasa bersikap adil`, 15, 215);
+        doc.text(`serta terbuka dalam membuat keputusan.`, 19, 220);
+        doc.text(`5. Menjadi agen perubahan yang berani bersuara dan berfikir secara kritikal, serta komited menyuarakan isu-isu`, 15, 225);
+        doc.text(`mahasiswa di Kolej Kediaman secara berhemah dan berfakta.`, 19, 230);
+        doc.text(`6. Menjaga nama baik dan reputasi universiti, serta tidak terlibat dalam sebarang aktiviti yang boleh mencemarkan`, 15, 235);
+        doc.text(`imej institusi.`, 19, 240);
+        doc.text(`7. Sanggup ditegur dan bersedia memperbaiki kelemahan diri, demi memperkukuh kepercayaan mahasiswa`, 15, 245);
+        doc.text(`MTKT.`, 19, 250);
+
+        // University seal and barcode
+        doc.addImage("https://via.placeholder.com/80x80?text=University+Seal", "JPEG", 180, 30, 25, 25);
+        doc.addImage("https://via.placeholder.com/80x30?text=Barcode+"+studentId, "JPEG", 180, 60, 25, 10);
+
+        // Important notes section
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text("MAKLUMAT PENTING", 15, 120);
+        doc.text("AKU JANJI AHLI MTKT", 15, 160);
+        
+        doc.setFont("helvetica", "normal");
+        doc.text("1. Slip ini perlu DICETAK dan DITANDATANGANI oleh ahli baharu.", 15, 125);
+        doc.text("2. Slip ini perlu dibawa ke Mesyuarat Sulung MTKT 2025/26.", 15, 130);
+        doc.text("3. Slip ini menunjukkan pengesahan rasmi sebagai ahli MTKT.", 15, 135);
+        doc.text("4. Ahli MTKT perlu menampal gambar bersaiz passport di ruangan gambar.", 15, 140);
+
+        // Signature section
+        doc.setFontSize(10);
+        doc.text("Tandatangan Penasihat: _________________________", 109, 275);
+        doc.text("Tarikh: _______________", 109, 283);
+        
+        doc.text("Tandatangan Ahli: _________________________", 15, 275);
+        doc.text("Tarikh: _______________", 15, 283);
+
+        // Footer
+        doc.setFontSize(8);
+        doc.setTextColor(100, 100, 100);
+        doc.text('Slip Tawaran ini adalah cetakan komputer.', 15, 293, { align: 'left' });
+        doc.text(`Dicetak pada : ${new Date().toLocaleString()}`, 198, 293, { align: 'right' });
+
+        // Save the PDF
+        doc.save(`Slip Tawaran MTKT - ${studentId}.pdf`);
+    }
+}
+
+function filterInterviews(room) {
+    const rows = document.querySelectorAll('.interview-table tbody tr');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    // Update active filter button
+    filterBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if ((room === 'all' && btn.textContent === 'All') ||
+            (room === 'room1' && btn.textContent === 'Room 1') ||
+            (room === 'room2' && btn.textContent === 'Room 2')) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Show/hide rows based on filter
+    rows.forEach(row => {
+        if (room === 'all') {
+            row.style.display = '';
+        } else {
+            row.style.display = row.getAttribute('data-room') === room ? '' : 'none';
+        }
+    });
+}
+
+// Close modal handler
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('successModal').style.display = 'none';
 });
 
-    // Close modal
-    document.getElementById('closeModal').addEventListener('click', function() {
-        document.getElementById('successModal').style.display = 'none';
-    });
-</script>
+// Initialize with welcome content
+document.addEventListener('DOMContentLoaded', () => {
+    loadContent('welcome');
+});
+  </script>
 </body>
 </html>
